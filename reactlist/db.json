@@ -1,7 +1,13 @@
 {
-    "takspoin": [
-    {"id":1, "descricao": "Revisar HTML Semântico"},
-    {"id":2, "descricao": "Revisar HTML Semântico"},
-    {"id":3, "descricao": "Revisar HTML Semântico"}
-    ]
+  "takspoin": [
+    {
+      "descricao": "Revisão HTML ",
+      "id": "EMWJZq3y-2E"
+    },
+    {
+      "descricao": "Revisão CSS ",
+      "id": "PCPl5r7H278"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
