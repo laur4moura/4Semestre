@@ -1,4 +1,4 @@
-import { Text, View,  StatusBar } from "react-native"
+import { View,  StatusBar } from "react-native"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
 import { Styles } from "./Styles"
 import Header from "./components/header/Header"
@@ -11,11 +11,10 @@ function App() {
     return(
        <SafeAreaProvider>
             <SafeAreaView style={Styles.safeArea}>
+                <View style={Styles.container}>
                 <Header />
                     <FormTask />
-                <View style={Styles.container}>
                     <TaskList />
-                    <TaskItem />
                     <StatusBar style="auto" />
                 </View>
                 <Footer />
