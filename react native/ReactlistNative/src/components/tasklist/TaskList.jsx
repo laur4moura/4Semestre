@@ -2,47 +2,29 @@ import { TaskListStyles } from "./TaskListStyle"
 import { ScrollView } from "react-native"
 import { TaskItem } from "../taskitem/TaskItem"
 import { useEffect, useState } from "react"
+import { TaskContext } from "../../context/TaskContext"
+import { useContext } from "react"
+
 
 
 export const TaskList = () =>{
+    const {listagemTarefas, getTasks, postTasks, deleteTasks} = useContext(TaskContext)//state global
 
-    const [listaTarefas, setListaTarefas] = useState()
+    useEffect(()=>{
+        getTasks()
+    })
+    
+    
 
-    const getTasks = async() => {
-        try {
-            const APIReturn = await axios.get("http://172.16.2.31:3000/dados")
-            const APiData = await APIReturn.data
-            setListaTarefas(APiData)
-            
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const cadTasks =  () => {
-        
-    }
-
-    const putTasks = () => {
-        console.log("Função get em desenvolvimento")
-    }
-
-    const deleteTasks = () => {
-        console.log("Função get em desenvolvimento")
-    }
-
-useEffect(()=>{
-    getTasks()
-})
 
 
     return(
         <ScrollView style={TaskListStyles.taskListContainer}>
             {
-                listaTarefas.map((tarefa)=>{
+                listagemTarefas.map((tarefa)=>{
                     return(
 
-                        <TaskItem dados={tarefa} />
+                        <TaskItem key={tarefa.id } id= {tarefa.id} descricao={tarefa.descricao} />
                     )
                 })
             }

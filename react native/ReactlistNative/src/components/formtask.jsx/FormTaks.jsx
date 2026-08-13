@@ -3,16 +3,21 @@ import{ FormTaskStyles } from "./FormTaskStyles"
 import { TextInput } from "react-native"
 import { TouchableOpacity } from "react-native"
 import { Text } from "react-native"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Alert } from "react-native"
+import { TaskContext } from "../../context/TaskContext"
 
 
 export const FormTask = () => {
-
-    const [taskValue, setTaskValue] = useState("")
+    const {postTasks, getTasks, taskValue, deleteTasks,setTaskValue, editMode, setEditMode, putTasks } = useContext(TaskContext)
+    
     
     const saveTask = () =>{
         console.log(`Texto digitado: ${taskValue}`)
+
+        postTasks(taskValue)
+        getTasks()
+
         Alert.alert("Adicionar Tarefa",
                     "Tarefa Adiconada",[
                     {text: "OK"},
@@ -34,12 +39,28 @@ export const FormTask = () => {
             <TouchableOpacity
             style={FormTaskStyles.taskButton}
             onPress={() =>
-                 {saveTask()}}
+                 {
+                    if (editMode) {
+                        putTasks()
+                    } else {
+                        saveTask()
+                    }
+                    
+                   }}
             >
                 
                 <Text style={FormTaskStyles.taskButtonText}
-                >Adicionar Tarefa</Text>
+                >Salvar</Text>
                 </TouchableOpacity>
+
+                {
+                editMode && (
+                <TouchableOpacity style={FormTaskStyles.taskButton} onPress={() => {setEditMode(false), setTaskValue("")}}>
+                
+                <Text style={FormTaskStyles.taskButtonText}>Cancelar</Text>
+                </TouchableOpacity>
+                )}
+
         </View>
     )
 }

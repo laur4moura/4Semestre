@@ -1,8 +1,13 @@
 {
-    "dados": [
-        {"id":1, "descricao": "Estudar Css"},
-        {"id":2, "descricao": "Estudar React Native"},
-        {"id":3, "descricao": "Estudar React"}
-        
-    ]
+  "dados": [
+    {
+      "descricao": "Revisar1",
+      "id": "YXIaa9S8QuQ"
+    },
+    {
+      "descricao": "Revisar2",
+      "id": "1lqiL1wZ8LY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
